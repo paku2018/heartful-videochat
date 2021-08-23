@@ -1,0 +1,46 @@
+// config.json with json-c mode
+{
+    "server": {
+        "log_level": "debug",
+//        "channel_origin": "https://cfXXXX.hourglass.vg",
+//        "ws_origin": "wss://alb.heart-warming.jp:XXXX",
+        "channel_origin": "http://localhost:XXXX",
+        "ws_origin": "ws://localhost:XXXX",
+
+//        "channel_origin": "https://test-heartful-talks.com:XXXX",
+//        "ws_origin": "wss://test-heartful-talks.com:XXXX",
+//        "front_origin": "https://heartful-talks.com",
+        "api_port": 8001,
+        "admin_api_port": 8002,
+        "channel_port": 8000,
+        //"channel_ssl": 443,
+        "channel_server": "./server.js",
+        "channel_file": "./.channels",
+        "channel_data_folder": "./data/",
+        "channel_stream_max": 1000000, // about 95h
+        "chunk_buffer_count": 32, // chunk ring buffer counts
+        "fetch_limit_time": 30000,
+        "text_pool_max": 20,
+        "": "" //end
+    },
+    "client": {
+        // Google Cloud Apikey
+        //"gc_apikey": "AIzaSyCNPQqjzo4q4uSw88RReBRs5b8Zn5I1cU4", // it's nishiura's private key so anyone don't use it!
+        "gc_languages": "https://translation.googleapis.com/language/translate/v2/languages",
+        "gc_translate": "https://translation.googleapis.com/language/translate/v2",
+        "gc_tts": "https://texttospeech.googleapis.com/v1/text:synthesize",
+        "twilio_sid": "AC5b5e9d50fd739d5d86df81cbf782db7b",
+        "twilio_token": "6c5a2859dedf22997e010c5a0e866c5e",
+        "twilio_sender_number": "+16699001370",
+        "mail_user": "appcondo2020@gmail.com",
+        "mail_password": "jrxzevycvzazuerb",
+//        "mail_user": "biginfo2012@gmail.com",
+//        "mail_password": "qpdlwld2012",
+//        "merchant_id": "AX1KFKOOPIAA6",
+//        "aws_public_key": "AHPML6OIAFFOC26YBFJ5ETAP",
+        "merchant_id": "A1BEVRDRB4CETO",
+        "aws_public_key": "LIVE-AEMEW66ACGZRJJWA67JDTBJL",
+        "": "" //end
+
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "name": "core",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "build": "webpack --mode=production",
+        "watch": "webpack --mode=development --watch",
+        "start": "node server.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@amazonpay/amazon-pay-api-sdk-nodejs": "^2.1.4",
+        "@google-cloud/speech": "^4.1.1",
+        "@google-cloud/text-to-speech": "^3.1.0",
+        "@google-cloud/translate": "^6.0.2",
+        "bcrypt": "^5.0.0",
+        "body-parser": "^1.19.0",
+        "bootstrap": "^4.5.0",
+        "cookie": "^0.4.1",
+        "cors": "^2.8.5",
+        "ecstatic": "^4.1.4",
+        "exceljs": "^4.2.0",
+        "express": "^4.17.1",
+        "express-fileupload": "^1.2.0",
+        "express-handlebars": "^5.1.0",
+        "fast-sound": "^1.0.3",
+        "http": "0.0.1-security",
+        "http-server": "^0.12.3",
+        "jquery": "^3.5.1",
+        "jsonc": "^2.0.0",
+        "jsonwebtoken": "^8.5.1",
+        "log4js": "^6.3.0",
+        "multer": "^1.4.2",
+        "mysql": "^2.18.1",
+        "nodemailer": "^6.5.0",
+        "popper.js": "^1.16.1",
+        "twilio": "^3.49.3",
+        "ws": "^7.3.1"
+    },
+    "devDependencies": {
+        "css-loader": "^4.2.1",
+        "nodemon": "^2.0.4",
+        "style-loader": "^1.2.1",
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12"
+    }
+}

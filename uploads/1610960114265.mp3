@@ -1,0 +1,69 @@
+CREATE TABLE `visitors` (
+  `visitor_id` int PRIMARY KEY AUTO_INCREMENT,
+  `full_name` varchar(255),
+  `profile_url` varchar(255),
+  `event_id` int,
+  `created_at` timestamp
+);
+
+CREATE TABLE `events` (
+  `event_id` int PRIMARY KEY AUTO_INCREMENT,
+  `deceased_name` varchar(255),
+  `start_date_time` datetime,
+  `time_zone` varchar(255),
+  `program_url` varchar(255),
+  `donation_url` varchar(255),
+  `flowershop_url` varchar(255),
+  `reminder_url` varchar(255),
+  `created_at` timestamp
+);
+
+CREATE TABLE `contenttypes` (
+  `content_typeid` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(255),
+  `speaker` bit,
+  `video` bit,
+  `video_url` varchar(255),
+  `created_at` timestamp
+);
+
+CREATE TABLE `condolences` (
+  `condolenceid` int PRIMARY KEY AUTO_INCREMENT,
+  `event_id` int,
+  `visitor_id` int,
+  `message` text,
+  `created_at` timestamp
+);
+
+CREATE TABLE `photos` (
+  `photoid` int PRIMARY KEY AUTO_INCREMENT,
+  `event_id` int,
+  `visitor_id` int,
+  `picture_url` int,
+  `message` text,
+  `created_at` timestamp
+);
+
+CREATE TABLE `speakers` (
+  `speakerid` int PRIMARY KEY AUTO_INCREMENT,
+  `event_id` int,
+  `visitor_id` int,
+  `role_name` varchar(255),
+  `content_typeid` int,
+  `notes` text,
+  `bio` text,
+  `speaker_order` int,
+  `created_at` timestamp
+);
+
+ALTER TABLE `visitors` ADD FOREIGN KEY (`event_id`) REFERENCES `events` (`event_id`);
+
+ALTER TABLE `condolences` ADD FOREIGN KEY (`event_id`) REFERENCES `events` (`event_id`);
+
+ALTER TABLE `photos` ADD FOREIGN KEY (`event_id`) REFERENCES `events` (`event_id`);
+
+ALTER TABLE `speakers` ADD FOREIGN KEY (`event_id`) REFERENCES `events` (`event_id`);
+
+ALTER TABLE `visitors` ADD FOREIGN KEY (`visitor_id`) REFERENCES `speakers` (`visitor_id`);
+
+ALTER TABLE `contenttypes` ADD FOREIGN KEY (`content_typeid`) REFERENCES `speakers` (`content_typeid`);

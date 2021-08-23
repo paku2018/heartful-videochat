@@ -1,0 +1,157 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <a class="navbar-brand" href="">Manage</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="menu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Channel
+                        </a>
+                    <div class="dropdown-menu" aria-labelledby="menu1">
+                        <a class="dropdown-item" href="#" onclick="showModal()" id="_set_mobile">Set Mobile Number</a>
+                        <a class="dropdown-item" href="#" onclick="channel_open()" id="_channel_open">Open</a>
+                        <a class="dropdown-item" href="#" onclick="channel_active_list()" id="_setting">Setting</a>
+                        <a class="dropdown-item d-none" href="#" onclick="channel_stop()" >Stop</a>
+                        <a class="dropdown-item" href="#" onclick="channel_close()" id="_channel_close">Close</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown" id="_channel_audio">
+                    <a class="nav-link dropdown-toggle" href="#" id="menu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Audio
+                        </a>
+                    <div class="dropdown-menu" aria-labelledby="menu2">
+                        <form class="dropdown-item">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="_transcribe">
+                                <label class="custom-control-label" for="_transcribe">Transcribe</label>
+                            </div>
+                            Music
+                            <input type="range" class=" d-none" min="0" max="100" value="100" id="_music_volume" onchange="music_volume_change()">
+                            <select class="form-control" id="_music" onchange="music_start()">
+                                    <option value="">stop</option>
+                                    <option value="media/At_The_Shore_The_Dark_Contenent.mp3">music1</option>
+                                    <option value="media/Beach_Party_Islandesque.mp3">music2</option>
+                                    <option value="media/For_Mimi.mp3">music3</option>
+                                </select>
+                        </form>
+                    </div>
+                </li>
+                <a class="nav-link" href="#" onclick="Ui.open_side()" id="_channel_message">Message</a>
+            </ul>
+        </div>
+        <div id="_sidebar" class="sidebar">
+            <div class="custom-control custom-switch custom-control-inline d-none">
+                <input type="checkbox" class="custom-control-input" id="_txt_speech">
+                <label class="custom-control-label" for="_txt_speech">Speech</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline d-none">
+                <input type="radio" class="custom-control-input" id="_txt_gender_male" name="_txt_gender" checked>
+                <label class="custom-control-label" for="_txt_gender_male">Male</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline d-none">
+                <input type="radio" class="custom-control-input" id="_txt_gender_famale" name="_txt_gender">
+                <label class="custom-control-label" for="_txt_gender_famale">Female</label>
+            </div>
+            <div class="card card-body">
+                <button type="button" style="width: fit-content" aria-label="Close" onclick="Ui.close_side()">戻る</button>
+                <select class="form-control d-none" id="_txt_language"></select>
+                <input class="form-control d-none" type="text" placeholder="your name" id="_txt_name"></input>
+                <textarea class="form-control d-none" placeholder="message" id="_txt_text"></textarea>
+                <button type="submit" class="btn btn-primary d-none" onclick="text_submit()">Submit</button>
+                <div id="_txt_alert"></div>
+            </div>
+            <div class="card card-body" id="_txt_msg">
+                <!--div>[Time: Name: Message]</div-->
+            </div>
+        </div>
+        <div class="modal fade" id="_modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Choose channel</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- List group -->
+                        <div class="list-group" id="_list">
+                            <input class="form-control mt-1" type="text" placeholder="your name" id="_mobile1" value="11">
+                            <input class="form-control mt-1 " type="text" placeholder="your name" id="_mobile2" value="12">
+                            <input class="form-control mt-1" type="text" placeholder="your name" id="_mobile3" value="13">
+                            <!--a class="list-group-item" data-toggle="list">item</a-->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="save_camera();">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="_modal_setting" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Choose channel</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- List group -->
+                        <div >
+                            <label class="radio-inline">
+                                <input type="radio" name="video" checked value="1" id="video_1">Video 1
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="video" value="2" id="video_2">Video 2
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="video" value="3" id="video_3">Video 3
+                            </label>
+                        </div>
+                        <div >
+                            <label class="radio-inline">
+                                <input type="radio" name="video" value="media/video_2.mp4">Default Video 1
+                            </label>
+                        </div>
+                        <div >
+                            <label class="radio-inline">
+                                <input type="radio" name="audio" checked value="1" id="audio_1">Audio 1
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="audio" value="2" id="audio_2">Audio 2
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="audio" value="3" id="audio_3">Audio 3
+                            </label>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="channel_modify();">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="_alert"></div>
+    <canvas id="_canvas"></canvas><br>
+    <video id="_video" muted hidden></video><br>
+    <audio id="_audio" hidden></audio>
+
+    <script src="dist/bundle.js"></script>
+    <script src="src/send.js"></script>
+</body>
+
+</html>
